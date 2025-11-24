@@ -14,12 +14,24 @@ type arguments struct {
 	num_must_eat     int
 }
 
+func is_valid_number(s string) (int, error) {
+	num, err := strconv.Atoi(s)
+	if err != nil {
+		return 0, err
+	}
+
+	if num <= 0 {
+		return 0, fmt.Errorf("must be a positive integer.")
+	}
+	return num, nil
+}
+
 func check_argv(argv []string) (*arguments, error) {
 	if len(argv) != 5 && len(argv) != 6 {
 		return nil, fmt.Errorf("Error arguments!\nPlease input: ./philo " +
 			"number_of_philosophers " +
 			"time_to_die time_to_eat time_to_sleep " +
-			"[number_of_times_each_philosopher_must_eat](option)\n")
+			"[number_of_times_each_philosopher_must_eat](option)")
 	}
 	num_philosophers, err := is_valid_number(os.Args[1])
 	if err != nil {
@@ -51,12 +63,4 @@ func check_argv(argv []string) (*arguments, error) {
 		time_to_sleep:    time_to_sleep,
 		num_must_eat:     num_must_eat,
 	}, nil
-}
-
-func is_valid_number(s string) (int, error) {
-	num, err := strconv.Atoi(s)
-	if err != nil || num <= 0 {
-		return 0, err
-	}
-	return num, nil
 }

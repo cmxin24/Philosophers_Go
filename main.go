@@ -11,4 +11,8 @@ func main() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
+	data := init_data(argv)
+	data.start()
+
+	<-data.done
 }

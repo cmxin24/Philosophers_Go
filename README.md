@@ -1,6 +1,6 @@
 # 42 Philosophers in Go
 
-This project is rewrite my C vertion 42 Philosophers task by using Go language.
+This project is rewrite my C version 42 Philosophers task by using Go language.
 
 ## Build
 

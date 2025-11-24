@@ -14,7 +14,7 @@ type arguments struct {
 	num_must_eat     int
 }
 
-func checkArgv(augs []string) (*arguments, error) {
+func check_argv(augs []string) (*arguments, error) {
 	if len(os.Args) != 5 && len(os.Args) != 6 {
 		return nil, fmt.Errorf("Error arguments!\nPlease input: ./philo " +
 			"number_of_philosophers " +
